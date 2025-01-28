@@ -1,1 +1,3 @@
-# Douglas London, Variable
+# Douglas London, Variable notes
+
+print("it worked!")
