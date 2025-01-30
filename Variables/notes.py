@@ -10,3 +10,4 @@ print(name, "really likes", subject)
 print(subject)
 
 name = "dogo1017"
+country = "United States of America"
