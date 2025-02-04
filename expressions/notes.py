@@ -2,9 +2,13 @@
 
 num = 4
 
-print(num)
+# print(num)
 
 num /= 2
 
-print(num)
+# print(num)
+
+pi = 3.141592
+
+# print(f"{pi:.4f}")
 

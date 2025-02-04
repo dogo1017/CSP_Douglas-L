@@ -1,11 +1,11 @@
 // Douglas London, Expressions Notes C
 #include <stdio.h>
 #include <math.h>
-
-float equation = 5*7+11/(5-x);
-// + - * / 
+int num = 5;
+float pi = 3.141592653;
 int main(void){
-
-    //printf("%f", equation);
+    num = 4;
+    printf("%d\n", num);
+    printf("%.9999999999999f\n", pi);
     return 0;
 }
