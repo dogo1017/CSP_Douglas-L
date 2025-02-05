@@ -1,4 +1,4 @@
-# Douglas London, python practice
+# Douglas London, python project PY
 
 name = input("what is your name: ")
 <<<<<<< HEAD

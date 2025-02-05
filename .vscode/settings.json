@@ -1,5 +1,8 @@
 {
     "files.associations": {
-        "First_C_Program.C": "cpp"
+        "First_C_Program.C": "cpp",
+        "first_project.C": "cpp",
+        "practice.C": "cpp",
+        "cmath": "cpp"
     }
 }
