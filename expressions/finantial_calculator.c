@@ -48,17 +48,17 @@ float transportation_percent = transportation/income*100;
 // calculate percent income of spending (spending/income*100) (variable)
 float spending_percent = spendings/income*100;
 //  your rent is $XX.XX which is XX% of your income. (printf)
-printf("your rent is $",rent, "which is", rent_percent, "% of your income");
+printf("your rent is $%f, which is %f% of your income.", rent, rent_percent);
 //  your utilities is $XX.XX which is XX% of your income. (printf)
-printf("your utilities is $",utilities, "which is", utilities_percent, "% of your income");
+printf("your utilities is $%f, which is %f% of your income.");
 //  your groceries is $XX.XX which is XX% of your income. (printf)
-printf("your groceries is $",groceries, "which is", groceries_percent, "% of your income");
+printf("your groceries is $%f, which is %f% of your income.");
 //  your transportation is $XX.XX which is XX% of your income. (printf)
-printf("your tramsportation is $",transportation, "which is", transportation_percent, "% of your income");
+printf("your tramsportation is $%f, which is %f% of your income.");
 //  your savings is $XX.XX which is XX% of your income. (printf)
-printf("your savings is $",savings, "which is 10% of your income.");
+printf("your savings is $%f, which is 10% of your income.");
 // //  your spending is $XX.XX which is XX% of your income. (printf)
-printf("your spendings is $",spendings, "which is", spending_percent, "% of your income");
+printf("your spendings is $%f, which is %f% of your income.");
 
 
 
