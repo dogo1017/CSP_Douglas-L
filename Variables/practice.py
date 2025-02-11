@@ -1,6 +1,4 @@
-#python variables practice
-
-#python variables practice
+# Douglas london, python variables practice
 
 name = "Douglas"
 number_between_1_and_10 = 9
