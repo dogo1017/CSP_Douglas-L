@@ -15,4 +15,4 @@ sentence = "The quick brown fox jumps over the lazy dog"
 #print(sentence[4])
 start = print sentence.find("brown")
 length = len("brown fox")
-print(sentence[start:start+length]
+print(sentence[start:start+length])
