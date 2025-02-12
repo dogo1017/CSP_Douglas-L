@@ -3,6 +3,8 @@
         "First_C_Program.C": "cpp",
         "first_project.C": "cpp",
         "practice.C": "cpp",
-        "cmath": "cpp"
+        "cmath": "cpp",
+        "text_encoding": "c",
+        "typeinfo": "c"
     }
 }
