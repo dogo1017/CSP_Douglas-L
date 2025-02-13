@@ -5,6 +5,14 @@
         "practice.C": "cpp",
         "cmath": "cpp",
         "text_encoding": "c",
-        "typeinfo": "c"
+        "typeinfo": "c",
+        "array": "c",
+        "*.tcc": "c",
+        "memory": "c",
+        "format": "c",
+        "functional": "c",
+        "tuple": "c",
+        "utility": "c",
+        "variant": "c"
     }
 }
