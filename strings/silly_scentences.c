@@ -2,25 +2,25 @@
 #include <stdio.h>
 // empty string variables for user words (minimum 3)
 
-char adj1[50];
-char noun2;
-char verb_pt3; 
-char adv4;
-char adj5;
-char noun6;
-char noun7;
-char adj8;
-char verb9;
-char adv10; 
-char verb_pt11; 
-char adj12;
+char adj1[50];                    
+char noun2[50];
+char verb_pt3[50]; 
+char adv4[50];
+char adj5[50];
+char noun6[50];
+char noun7[50];
+char adj8[50];
+char verb9[50];
+char adv10[50]; 
+char verb_pt11[50]; 
+char adj12[50];
 
 int main(void){
     
 //welcome user
 
 
-printf("welcome to my silly scentences program. When the program asks for a specific category of word you will think of one and respond with one of those words to fill out a scentence.\n");
+printf("welcome to my silly scentences program. When the program asks for a specific category of word you will think of one and respond with one, and only one, of those words to fill out a scentence.\n");
 
 //ask for words (print with scanf) (in C we need to tell the user they can only type one word)
 
@@ -52,33 +52,10 @@ printf("adjective:\n");
 scanf("%s", adj12);
 
 
-
+printf("Today I went to the zoo. I saw a(n) %s %s jumping up and down in its tree. He %s %s through the large tunnel that led to its %s %s. I got some peanuts and passed them through the cage to a gigantic gray %s towering above my head. Feeding that animal made me hungry. I went to get a %s scoop of ice cream. It filled my stomach. Afterwards I had to %s %s to catch our bus. When I got home I %s my mom for a %s day at the zoo.", adj1, noun2, verb_pt3, adv4, adj5, noun6, noun7, adj8, verb9, adv10, verb_pt11, adj12);
 
 
 
     return 0;
 }
 
-
-
-
-
-
-
-
-
-
-
-//Today I went to the zoo. I saw a(n)
-//___________(adjective)
-//_____________(Noun) jumping up and down in its tree.
-//He _____________(verb, past tense) __________(adverb)
-//through the large tunnel that led to its _______(adjective)
-//__________(noun). I got some peanuts and passed
-//them through the cage to a gigantic gray _______(noun)
-//towering above my head. Feeding that animal made
-//me hungry. I went to get a __________(adjective) scoop
-//of ice cream. It filled my stomach. Afterwards I had to
-//__________(verb) __________ (adverb) to catch our bus.
-//When I got home I __________(verb, past tense) my
-//mom for a __________(adjective) day at the zoo. 
