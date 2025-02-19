@@ -4,16 +4,10 @@
 int num;
 char name[50], place[50], verb[50];
 
-void add(int numOne, int numTwo){
-    return numOne+numTwo;
-}
-const char* word(char type[50]){
-    char choice[50];
-    printf("please give me a %s:\n", type);
-    scanf("%s", choice);
-    return choice;
-}
 
+void due(char assignment[50], char day[20]){
+    printf("The %s assignment is due %s\n", assignment, day);
+}
 
 
 int main(void){
@@ -26,7 +20,9 @@ int main(void){
 //print("%d")
 
 
-
+//due("functions notes", "Today");
+//due("Hello world update", "Tomorrow");
+//due("finantial calculator update", "friday");
 
 
 
