@@ -19,7 +19,7 @@ printf("Hello, this is my finantial calculator that calculates savings, spendins
 printf("What is your monthly income:\n");
 scanf("%f", income);
 
-float rent = inputs("rent");
+float rent = inputs("rent", 0);
 
 
 
