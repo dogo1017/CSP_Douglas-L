@@ -47,7 +47,7 @@ printf("%d\n", length);
     //second brackets sets lenght of each string
 char movies[][20] = {"Cars", "Treasure Planet", "An American Tale", "Marley and Me", "The Avengers"}; 
 printf("The movie is %s\n", movies[1]);
-int mlenght = sizeof(movies)/(movies[0]);
+int mlenght = sizeof(movies)/sizeof(movies[0]);
 //How do you make for loops in C?
     //set the itterator, keeps track of times throiugh the loop (best to set as x or y)
 int x;
