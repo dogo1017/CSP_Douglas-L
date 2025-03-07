@@ -6,19 +6,19 @@ int main(void){
 int number = 0;
 while (number <= 50){
     if (number == 0){
-        print(0);
+        printf("0\n");
         number += 1;
     }else if(number%3==0 && number%5==0){
-        print("FizzBuzz");
+        printf("FizzBuzz\n");
         number += 1;
     }else if(number%5==0){
-        print("buzz");
+        printf("buzz\n");
         number += 1;
     }else if (number%3==0){
-        print("fizz");
+        printf("fizz\n");
         number += 1;
     }else{
-        print(number);
+        printf("%d\n", number);
         number += 1;
     }
 }
