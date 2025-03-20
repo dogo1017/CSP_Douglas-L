@@ -13,3 +13,5 @@ while True:
     if time.time() - start_time > 100:  # The animation will last for 10 seconds
         break
 sys.stdout.write("\rDone!")
+
+#It waorks

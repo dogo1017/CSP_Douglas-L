@@ -14,7 +14,7 @@ if(strcmp(name, "Douglas") == 0){ // strcmp is for comparing strings
 //How do you write else statements in C?
 }else{
     printf("Hello %s Welcome to class.\n", name);
-}
+
 
 printf("How many siblings do you have?\n");
 scanf("%d", &num);
