@@ -3,8 +3,12 @@ import random
 low = 1  
 high = 6  
 guess = 0  
-numbers = [random.randint(low, high) for _ in range(4)]  
-  
+num1 = random.randint(low,high)
+num2 = random.randint(low,high)
+num3 = random.randint(low,high)
+num4 = random.randint(low,high)
+
+
 correct_count = 0  
 wrong_count = 0  
 
@@ -17,14 +21,13 @@ while guess == 0:
     if len(user_input) != 4:  
         print("Please enter exactly 4 characters.")  
         continue 
-  
-    correct_count = 0  
-    wrong_count = 0  
-      
-    for index in range(len(numbers)):  
-        if user_input[index] == str(numbers[index]):  
-            correct_count += 1  
-        elif user_input[index] in [str(num) for num in numbers]:  
+    
+    for index in range(4):
+        if str(eval(f'num{index + 1}')) == user_input[index]:  
+            correct_count += 1      
+        elif user_input[index] in [str(num1), str(num2), str(num3), str(num4)]:  
             wrong_count += 1  
+
   
+
     print("Correct:", correct_count, "Wrong:", wrong_count)  
