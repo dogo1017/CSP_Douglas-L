@@ -1,25 +1,18 @@
-import pygame
-import time
+import pygame  
+import time  
+  
+pygame.init()  # Initialize Pygame  
+  
+# Initialize the mixer  
+pygame.mixer.init()  
+  
+try:  
+    pygame.mixer.music.load('audiomass-output.mp3')    
+    pygame.mixer.music.play()    
+    time.sleep(0)  
+    print("Sound has finished playing.")  
+except Exception as e:  
+    print("There was an error:", e)  
+  
+print("this will always run")  
 
-# Initialize pygame mixer for audio functionality
-pygame.mixer.init()
-
-
-try:
-    # Load a sound file (replace 'your_sound_file.wav' with the path to your audio file)
-    sound = pygame.mixer.Sound('batman_theme_x.wav')
-
-    # Play the sound
-    sound.play()
-
-    # Wait for the sound to finish playing
-    time.sleep(sound.get_length())
-
-    print("Sound has finished playing.")
-except:
-    print("there was an error")
-    # ask for inpuyt
-    # if no, die
-    
-
-print("this will always run")

@@ -1,7 +1,7 @@
 #Alan De Lara
 import random  
-  
-# Your original word list  
+import time  
+# word list  
 words = ["pattern", "hay", "overview", "anniversary", "flourish", "remember", "experiment","arrange", "stadium", "domestic", "demonstration", "conversation", ]  
   
 def display_hangman(wrong_attempts):  
@@ -53,7 +53,7 @@ def display_hangman(wrong_attempts):
           |     /|\\
           |      |  
           |        
-       ___|_________ 
+        __|_________ 
         """  
     elif wrong_attempts == 5:  
         return """  
@@ -62,19 +62,10 @@ def display_hangman(wrong_attempts):
           |      O  
           |     /|\\
           |      |  
-          |     /  
+          |     / \\
         __|_________ 
         """  
-    elif wrong_attempts == 6:  
-        return """  
-          ------  
-          |      |  
-          |      O  
-          |     /|\\  
-          |      |  
-          |     / \\  
-        __|_________  
-        """  
+    
 
     return stages[wrong_attempts]  
   
@@ -89,7 +80,7 @@ def check_guess(letter, chosen_word, guessed_letters):
 while True:  
     guessed_letters = []  # Reset guessed letters  
     wrong_attempts = 0    # Reset wrong attempts  
-    max_attempts = 6      # Define max attempts  
+    max_attempts = 6      # max attempts  
     chosen_word = random.choice(words)  # Choose a new word  
   
     while wrong_attempts < max_attempts:  # Inner loop for guessing  
@@ -116,9 +107,7 @@ while True:
     if wrong_attempts == max_attempts:  # Loss condition  
         print("Game over! The word was:", chosen_word)  
   
-    # Optionally, ask if they want to play again  
+    # ask if they want to play again  
     play_again = input("Do you want to play again? (yes/no) ")  
     if play_again.lower() != "yes":  
         break  
-
-
