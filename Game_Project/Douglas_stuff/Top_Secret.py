@@ -1,37 +1,16 @@
-#Douglas London, top scret stuff (; dont PEEK
+import pygame
+import time
 
-import os
-import sys
-import urllib.request
+# Initialize pygame mixer for audio functionality
+pygame.mixer.init()
 
-# Function to check and install playsound if missing
-def install_playsound():
-    try:
-        from playsound import playsound
-        return playsound
-    except ImportError:
-        print("Installing required module...")
-        os.system(f"{sys.executable} -m pip install playsound")
-        from playsound import playsound
-        return playsound
+# Load a sound file (replace 'your_sound_file.wav' with the path to your audio file)
+sound = pygame.mixer.Sound('your_sound_file.wav')
 
-# Function to download an MP3 file if it doesn't exist
-def download_audio(file_name, url):
-    if not os.path.exists(file_name):
-        print(f"Downloading default audio file: {file_name}...")
-        urllib.request.urlretrieve(url, file_name)
-        print("Download complete!")
+# Play the sound
+sound.play()
 
-# Define audio file path
-audio_file = "audiofile.mp3"
-audio_url = "https://www.soundjay.com/button/beep-07.mp3" # A free beep sound
+# Wait for the sound to finish playing
+time.sleep(sound.get_length())
 
-# Ensure an MP3 file is available
-download_audio(audio_file, audio_url)
-
-# Import playsound (after ensuring it's installed)
-playsound = install_playsound()
-
-# Play the audio
-print("Playing sound...")
-playsound(audio_file)
+print("Sound has finished playing.")
