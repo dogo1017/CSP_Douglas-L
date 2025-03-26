@@ -2,6 +2,10 @@ import time
 import sys
 import threading
 import os
+import random
+
+
+
 
 def clear_terminal():
     os.system("cls" if os.name == "nt" else "clear")
@@ -19,13 +23,18 @@ def flashing_text(stop_event):
     sys.stdout.write("\033[?25h")  # Show the cursor again
     sys.stdout.flush()
 
-delay = 0.035
+delay = 0.01
 
 clear_terminal()  # Clear the terminal here
 
 message1 = "Welcome user...\n"\
 "The game you are about to play is a text based adventure game.\n"\
 "This game will test your skills through a series of minigames.\n"\
+"This game includes certain experiances that may cause anxiety or fear.\n"\
+"This game is meant to possibly raise the heart rate\n"\
+"and levels of adrenaline.\n"\
+"Please be aware of this before you continue.\n"\
+"\n"\
 "May I welcome you to...\n"\
 "\n"\
 "THE UNDERWORLD\n"\
@@ -78,4 +87,3 @@ clear_terminal()  # Clear the terminal again before printing the final message
 
 print("THE DARK ROOM\n")
 
-#k
