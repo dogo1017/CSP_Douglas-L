@@ -327,7 +327,7 @@ while True:
         break
     else:
         continue
-
+clear_terminal()
 # Backstory
 message3 = "You are a retired militry agent who served with the Navy Seals.\n"\
 "It has been 5 years since your retirement and you currently live in a little nieghborhood in Colorado.\n"\
