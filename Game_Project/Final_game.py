@@ -35,9 +35,8 @@ code3 = str(code3_int)
 
 
 
-
 code = code1 + code2 + code3
-print (code)
+
 
 
 
@@ -653,7 +652,7 @@ def keypad():
         print("Incorrect code.")
         keypad()
     elif input_code == code:
-        False
+        return(False)
 
 
 #function for game selection
