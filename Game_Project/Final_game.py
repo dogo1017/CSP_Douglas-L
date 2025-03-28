@@ -624,7 +624,7 @@ for char in message7:
     time.sleep(delay)
 
 
-# variable to store the map
+# Variable for the game map (should be displayed before entering the keypad section)
 map = " __________________________________\n"\
 "|            Tic-Tac-Toe           |\n"\
 "|               |   |              |\n"\
@@ -637,53 +637,26 @@ map = " __________________________________\n"\
 "|                Exit              |\n"\
 "|__________________________________|\n"
 
-
-
-
-
-
-# functin for keypad
-def keypad():
-    global code  # Ensure we are using the generated code
-    print("Please enter the 3-digit code, enter q to return to map")
-    input_code = input()
-
-    if input_code == "q":
-        clear_terminal()
-        game_selection()
-    elif input_code == code:
-        print("Correct code!")  # Give feedback
-        return True  # This can be used to trigger the next part of the game
-    else:
-        print("Incorrect code. Try again.")
-        return keypad()  # Re-call function to retry
-
-
-
-#function for game selection
+# Function to display the map and allow game selection
 def game_selection():
-    # prints the map
+    # Display the map to the player
     print(map)
-
-
-    # Game Selection
+    
     message8 = "You are located where it says 'Map'.\n"\
     "Where do you choose to go?\n"\
-    "HINT: The selections may have an. answer to the code.\n"\
+    "HINT: The selections may have an answer to the code.\n"\
     "1. Tic-Tac-Toe\n"\
     "2. Hangman\n"\
     "3. Memory\n"\
     "4. Keypad\n"\
     "Enter the number you choose:\n"
 
-
-    # function to print the message slowly.
+    # Print message slowly
     for char in message8:
         print(char, end="")
         time.sleep(delay)
 
-
-    # Stupid Proofs input
+    # Validate user input for map selection
     while True:
         try:
             user_input = int(input())
@@ -694,10 +667,7 @@ def game_selection():
         except ValueError:
             print("Invalid Input. Please enter a number between 1 and 4.")
 
-
-
-
-    # Collects the user's input
+    # Based on the player's choice, proceed to the relevant part of the game
     if user_input == 1:
         tic_tac_toe()
     elif user_input == 2:
@@ -705,15 +675,40 @@ def game_selection():
     elif user_input == 3:
         memory()
     elif user_input == 4:
-        clear_terminal()
-        keypad()
-       
-# Calls The game_selection Funtion
-if keypad():
-    # Move on with the game if the code is correct
-    print("Door unlocked! You proceed to the next stage.")
-else:
-    game_selection()
+        keypad()  # If 4 is selected, go to the keypad section
+
+# Function for keypad (entered only when selected from the map)
+def keypad():
+    global code  # Ensure we're using the generated code
+    print("You are at the keypad. Please enter the 3-digit code, or enter 'q' to return to the map.")
+    
+    while True:
+        input_code = input()
+
+        if input_code == "q":
+            clear_terminal()
+            game_selection()  # Return to the map if 'q' is entered
+            break
+        elif input_code == code:
+            print("Correct code! The door opens.")
+            clear_terminal()  # Clear screen and move to the next stage
+            # Continue with the next part of the game (e.g., a new chapter or puzzle)
+            next_chapter()
+            break
+        else:
+            print("Incorrect code. Try again.")
+
+# Continue with the next chapter after the correct code is entered
+def next_chapter():
+    message = "The door opens, and you find a new room awaiting you.\n"
+    for char in message:
+        print(char, end="")
+        time.sleep(delay)
+    # You can add the logic for the next part of the game here
+
+# Start the game by calling the game selection function after the room description
+game_selection()
+
 
 
 
