@@ -1,4 +1,4 @@
-# Text Based Adventure Storyline
+# Text Based Adventure
 import time
 import sys
 import threading
@@ -9,38 +9,19 @@ import random
 
 
 #Game Functions
-
-
-
-
 input_code = 0
-
 
 code1_int = random.randint(1,9)
 code2_int = random.randint(1,9)
 code3_int = random.randint(1,9)
 
-
-
-
-
-
 code1 = str(code1_int)
-
 
 code2 = str(code2_int)
 
-
 code3 = str(code3_int)
 
-
-
 code = code1 + code2 + code3
-
-
-
-
-
  
 def play_music():        
     pygame.init()          
@@ -91,7 +72,6 @@ except ImportError:
 def tic_tac_toe():
     clear_terminal()
 
-
     # Dictionary that holds the board
     slot = {
         1: '1', 2: '2', 3: '3',
@@ -99,20 +79,17 @@ def tic_tac_toe():
         7: '7', 8: '8', 9: '9'
     }
 
-
     # Function that draws the board
     def draw_board():
         return (f"{slot[1]} | {slot[2]} | {slot[3]}\n"
                 f"{slot[4]} | {slot[5]} | {slot[6]}\n"
                 f"{slot[7]} | {slot[8]} | {slot[9]}")
 
-
     # Welcomes player and draws the board
     print("\n")
     print("Welcome to Tic-Tac-Toe!")
     print("You are X and the computer is O")
     print(draw_board())
-
 
     # Main game loop
     while True:
@@ -132,7 +109,6 @@ def tic_tac_toe():
                 continue
         slot[player] = 'X'
 
-
         # Check if user won
         if (slot[1] == slot[2] == slot[3] or slot[4] == slot[5] == slot[6] or slot[7] == slot[8] == slot[9] or
             slot[1] == slot[4] == slot[7] or slot[2] == slot[5] == slot[8] or slot[3] == slot[6] == slot[9] or
@@ -140,8 +116,8 @@ def tic_tac_toe():
             if (slot[1] == slot[2] == slot[3] == 'X' or slot[4] == slot[5] == slot[6] == 'X' or
                 slot[7] == slot[8] == slot[9] == 'X' or slot[1] == slot[4] == slot[7] == 'X' or
                 slot[2] == slot[5] == slot[8] == 'X' or slot[3] == slot[6] == slot[9] == 'X' or
-                slot[1] == slot[5] == slot[9] == 'X' or slot[3] == slot[5] == slot[7] == 'X'):
-                print("You win!\n The third digit is", code3, "\n")
+                slot[1] == slot[5] == slot[9] == 'X' or slot[3] == slot[5] == slot[7]):
+                print("You win!\nThe third digit is", code3, "\n")
                 print("Press Enter to return to the map")
                 while True:
                     if input() == "":
@@ -151,6 +127,17 @@ def tic_tac_toe():
                     else:
                         break
 
+        # Check for tie after player's turn
+        if all(cell == 'X' or cell == 'O' for cell in slot.values()):
+            print("It's a tie!")
+            print("Press Enter to return to the map")
+            while True:
+                if input() == "":
+                    clear_terminal()
+                    game_selection()
+                    return  # Exit the function after game_selection()
+                else:
+                    continue
 
         # Computer's turn
         while True:
@@ -158,7 +145,6 @@ def tic_tac_toe():
             if slot[computer] != 'X' and slot[computer] != 'O':
                 slot[computer] = 'O'
                 print(draw_board())
-
 
                 # Check if computer won
                 if (slot[1] == slot[2] == slot[3] == 'O' or slot[4] == slot[5] == slot[6] == 'O' or
@@ -174,11 +160,10 @@ def tic_tac_toe():
                             return  # Exit the function after game_selection()
                         else:
                             continue
-                   
+
                 break
 
-
-        # Check for tie
+        # Check for tie after computer's turn
         if all(cell == 'X' or cell == 'O' for cell in slot.values()):
             print("It's a tie!")
             print("Press Enter to return to the map")
@@ -189,7 +174,6 @@ def tic_tac_toe():
                     return  # Exit the function after game_selection()
                 else:
                     continue
-            break
 
 
 
@@ -198,7 +182,7 @@ def tic_tac_toe():
 def hangman():
     clear_terminal()
     # word list  
-    words = ["Blood", "dark", "scared", "scream", "drenched", "helpless", "experiment","choking", "crazed", "knife", "chainsaw", "gore", "corpse", "decomposed" ]  
+    words = ["blood", "dark", "scared", "scream", "drenched", "helpless", "experiment", "choking", "crazed", "knife", "chainsaw", "gore", "corpse", "decomposed"]  
    
     def display_hangman(wrong_attempts):  
         if wrong_attempts == 0:  
@@ -262,9 +246,6 @@ def hangman():
             __|_________
             """  
 
-
-
-
         return [wrong_attempts]  
    
     def check_guess(letter, chosen_word, guessed_letters):  
@@ -307,19 +288,20 @@ def hangman():
                     if input() == "":
                         clear_terminal()
                         game_selection()
+                        return  # Exit the function after returning to the map
                     else:
                         continue
-                break  
            
         if wrong_attempts == max_attempts:  # Loss condition  
             print("Game over! The word was:", chosen_word)
             print("Press Enter to return to the map")
             while True:
                 if input() == "":
+                    clear_terminal()
                     game_selection()
+                    return  # Exit the function after returning to the map
                 else:
                     continue
-            break  
 
 
 #Anthony Petersen
@@ -327,8 +309,8 @@ def memory():
     clear_terminal()
     delay = 0.035
 
-
     ANinstructions = "This is a memory game that will flash the numbers and you have to repeat them.\n" \
+                     "\n"\
                      "Press Enter to begin.\n"
     ANinstructions2 = "Please enter your answer, and remember to add spaces in between each number: \n"\
                      "HINT: If the flashed numbers where:\n"\
@@ -337,8 +319,8 @@ def memory():
                      "[ 3 ] [ 6 ]\n"\
                      "You would enter the answer as '1 4 2 5 3 6'\n"
 
-
-    def memory():
+    def start_game():
+        clear_terminal()
         # Generate random numbers for the memory sequence
         ANmemory_1 = random.randint(1, 9)
         ANmemory_2 = random.randint(1, 9)
@@ -349,7 +331,7 @@ def memory():
             [ x ] [ x ]  
             [ x ] [ x ]""",
             f"""  
-            [ {ANmemory_2} ] [ {ANmemory_3} ]  
+            [ {ANmemory_2} ] [ {ANmemory_3} ]   
             [ {ANmemory_3} ] [ {ANmemory_1} ]  
             [ {ANmemory_1} ] [ {ANmemory_2} ]""",
             """  
@@ -358,17 +340,14 @@ def memory():
             [ x ] [ x ]""",
         ]
 
-
         # Display the frames
         for frame in ANframes:
             print(frame)
             time.sleep(2)  # Pause for a moment to show the frame
             os.system("cls" if os.name == "nt" else "clear")  # Clear the screen
 
-
         # Return the correct sequence
         return [ANmemory_2, ANmemory_3, ANmemory_3, ANmemory_1, ANmemory_1, ANmemory_2]
-
 
     def check_guess(ANuser_input, ANcorrect_guess):
         # Compare the user's input with the correct sequence
@@ -378,25 +357,23 @@ def memory():
         else:
             print("Try again!")
             return False
-
-
+        
     # Display instructions
     for char in ANinstructions:
         print(char, end="")
         time.sleep(delay)
     input()  # Wait for the user to press Enter
 
-
     while True:  # Loop until the user guesses correctly
-        ANcorrect_sequence = memory()  # Display the frames and get the correct sequence
+        ANcorrect_sequence = start_game()  # Display the frames and get the correct sequence
         ANuser_input = input(ANinstructions2).split()  # Get the user's input as a list of strings
-
 
         try:
             # Convert input to integers
             ANuser_input = [int(num) for num in ANuser_input]
             if check_guess(ANuser_input, ANcorrect_sequence):  # Check if the guess is correct
-                print("The second digit is", code2, "\n")
+                print("\n")
+                print("Digit #2 is", code2)
                 print("Press Enter to return to the map")
                 while True:
                     if input() == "":
@@ -406,7 +383,7 @@ def memory():
                     else:
                         continue
         except ValueError:
-            print("Please enter numbers only! Try again.")  # Handles invalid input
+            print("Please enter numbers only!")  # Handle invalid input
 
 
 
@@ -417,11 +394,37 @@ def clear_terminal():
     os.system("cls" if os.name == "nt" else "clear")
 
 
-def flashing_text(stop_event):
+def flashing_text1(stop_event):
     sys.stdout.write("\033[?25l")  # Hide the cursor
     sys.stdout.flush()
     while not stop_event.is_set():
         sys.stdout.write("\rPress ENTER to continue   ")
+        sys.stdout.flush()
+        time.sleep(0.5)
+        sys.stdout.write("\r                                ")  # Ensure the line is cleared properly
+        sys.stdout.flush()
+        time.sleep(0.5)
+    sys.stdout.write("\033[?25h")  # Show the cursor again
+    sys.stdout.flush()
+
+def flashing_text2(stop_event):
+    sys.stdout.write("\033[?25l")  # Hide the cursor
+    sys.stdout.flush()
+    while not stop_event.is_set():
+        sys.stdout.write("\rPress ENTER to open door   ")
+        sys.stdout.flush()
+        time.sleep(0.5)
+        sys.stdout.write("\r                                ")  # Ensure the line is cleared properly
+        sys.stdout.flush()
+        time.sleep(0.5)
+    sys.stdout.write("\033[?25h")  # Show the cursor again
+    sys.stdout.flush()
+
+def flashing_text3(stop_event):
+    sys.stdout.write("\033[?25l")  # Hide the cursor
+    sys.stdout.flush()
+    while not stop_event.is_set():
+        sys.stdout.write("\rPress ENTER to restart at map.   ")
         sys.stdout.flush()
         time.sleep(0.5)
         sys.stdout.write("\r                                ")  # Ensure the line is cleared properly
@@ -466,7 +469,7 @@ for char in message1:
 
 
 stop_event = threading.Event()
-thread = threading.Thread(target=flashing_text, args=(stop_event,))
+thread = threading.Thread(target=flashing_text1, args=(stop_event,))
 thread.start()
 
 
@@ -492,7 +495,7 @@ for char in message2:
 
 # Waits for the user to press enter - Douglas
 stop_event = threading.Event()
-thread = threading.Thread(target=flashing_text, args=(stop_event,))
+thread = threading.Thread(target=flashing_text1, args=(stop_event,))
 thread.start()
 
 
@@ -509,7 +512,8 @@ message3 = "You are a retired militry agent who served with the Navy Seals.\n"\
 "However, one day you were driving home from a car trip when everything darkened.\n"\
 "You wake up in a dark room with no windows and no doors.\n"\
 "The only thing you remember is a terrifying feeling of dread that you seemed to feel, just hours before.\n"\
-"Suddenly you hear a distant\n\n"
+"Suddenly you hear a distant\n"\
+"\n"
 
 
 
@@ -530,7 +534,7 @@ time.sleep(1)
 
 # waits for the user to press enter - Douglas
 stop_event = threading.Event()
-thread = threading.Thread(target=flashing_text, args=(stop_event,))
+thread = threading.Thread(target=flashing_text1, args=(stop_event,))
 thread.start()
 
 
@@ -554,7 +558,7 @@ for char in message4:
 
 # waits for the user to press enter - Douglas
 stop_event = threading.Event()
-thread = threading.Thread(target=flashing_text, args=(stop_event,))
+thread = threading.Thread(target=flashing_text1, args=(stop_event,))
 thread.start()
 
 
@@ -566,47 +570,44 @@ clear_terminal()
 
 # Chapter 2 - Jared
 message5 = "As you feel around the room, you catch hold of a door handle.\n"\
-"\n"\
-"Press Enter to Open Door\n"\
+"\n"
 
 
 # function to print the message slowly.
 for char in message5:
-    print(char, end="")
+    print(char, end="", flush=True)
     time.sleep(delay)
 
+# waits for the user to press enter - Douglas
+stop_event = threading.Event()
+thread = threading.Thread(target=flashing_text2, args=(stop_event,))
+thread.start()
 
-# waits for the user to press enter
-while True:
-    if input() == "":
-        break
-    else:
-        print("Only Press ENTER")
+input()
+stop_event.set()
+thread.join()
 clear_terminal()
 
 
 message6 = "As the door slowly creaks open, you peer out into a long hallway.\n"\
 "The hallway is dimly lit and has wallpaper that looks as though it is from an old orphanage.\n"\
-"You walk down the hall and find a door with the words “too late” scribbled on it.\n"\
-"\n"\
-"Press Enter to Open Door\n"
-
+"You walk down the hall and find a door with the words “TOO LATE” scribbled on it.\n"\
+"\n"
 
 # function to print the message slowly.
 for char in message6:
-    print(char, end="")
+    print(char, end="", flush=True)
     time.sleep(delay)
 
+# waits for the user to press enter - Douglas
+stop_event = threading.Event()
+thread = threading.Thread(target=flashing_text2, args=(stop_event,))
+thread.start()
 
-# waits for the user to press enter
-while True:
-    if input() == "":
-        break
-    else:
-        print("Only Press ENTER")
+input()
+stop_event.set()
+thread.join()
 clear_terminal()
-
-
 
 #Chapter 2
 message7 = "The door scrapes loudly across the floor,\n"\
@@ -624,7 +625,7 @@ for char in message7:
     time.sleep(delay)
 
 
-# Variable for the game map (should be displayed before entering the keypad section)
+# variable to store the map
 map = " __________________________________\n"\
 "|            Tic-Tac-Toe           |\n"\
 "|               |   |              |\n"\
@@ -637,11 +638,32 @@ map = " __________________________________\n"\
 "|                Exit              |\n"\
 "|__________________________________|\n"
 
-# Function to display the map and allow game selection
+
+
+# Function for keypad
+def keypad():
+    while True:
+        print("Please enter the 3-digit code, or enter 'q' to return to the map.")
+        input_code = input()
+        if input_code == "q":
+            clear_terminal()
+            game_selection()  # Return to the map if the user enters 'q'
+            return 
+        elif input_code != code:
+            print("Incorrect code. Try again.")
+        elif input_code == code:
+            clear_terminal()
+            print("CORRECT!")
+            time.sleep(1)
+            clear_terminal()
+            return 
+        
+#function for game selection
 def game_selection():
-    # Display the map to the player
+    # prints the map
     print(map)
-    
+
+    # Game Selection
     message8 = "You are located where it says 'Map'.\n"\
     "Where do you choose to go?\n"\
     "HINT: The selections may have an answer to the code.\n"\
@@ -651,12 +673,12 @@ def game_selection():
     "4. Keypad\n"\
     "Enter the number you choose:\n"
 
-    # Print message slowly
+    # function to print the message slowly.
     for char in message8:
         print(char, end="")
         time.sleep(delay)
 
-    # Validate user input for map selection
+    # Stupid Proofs input
     while True:
         try:
             user_input = int(input())
@@ -667,7 +689,7 @@ def game_selection():
         except ValueError:
             print("Invalid Input. Please enter a number between 1 and 4.")
 
-    # Based on the player's choice, proceed to the relevant part of the game
+    # Collects the user's input
     if user_input == 1:
         tic_tac_toe()
     elif user_input == 2:
@@ -675,47 +697,20 @@ def game_selection():
     elif user_input == 3:
         memory()
     elif user_input == 4:
-        keypad()  # If 4 is selected, go to the keypad section
-
-# Function for keypad (entered only when selected from the map)
-def keypad():
-    global code  # Ensure we're using the generated code
-    print("You are at the keypad. Please enter the 3-digit code, or enter 'q' to return to the map.")
-    
-    while True:
-        input_code = input()
-
-        if input_code == "q":
-            clear_terminal()
-            game_selection()  # Return to the map if 'q' is entered
-            break
-        elif input_code == code:
-            print("Correct code! The door opens.")
-            clear_terminal()  # Clear screen and move to the next stage
-            # Continue with the next part of the game (e.g., a new chapter or puzzle)
-            next_chapter()
-            break
-        else:
-            print("Incorrect code. Try again.")
-
-# Continue with the next chapter after the correct code is entered
-def next_chapter():
-    message = "The door opens, and you find a new room awaiting you.\n"
-    for char in message:
-        print(char, end="")
-        time.sleep(delay)
-    # You can add the logic for the next part of the game here
-
-# Start the game by calling the game selection function after the room description
+        clear_terminal()
+        keypad()
+       
+# Calls The game_selection Funtion
 game_selection()
 
 
-
-
 # next message
+print("CORRECT")
+time.sleep(1)
 clear_terminal()
+
 message9 = "The metal sheet opens with a hiss, and you walk over to the door.\n"\
-"On the door, in bold red letters, you read, “DO NOT ENTER”\n"\
+"On the door, in bold red letters, you read, “DO NOT ENTER.”\n"\
 "Should you open the door?\n"\
 "1 Yes\n"\
 "2 No\n"\
@@ -732,7 +727,7 @@ for char in message9:
 def message10():
     clear_terminal()
     message10 = "You leave the door closed and instead wander around the rooms looking for any way to escape,\n"\
-    "But the only thing you find is a trap door with a heavy duty lock on it.\n"\
+    "but the only thing you find is a trap door with a heavy duty lock on it.\n"\
     "It appears the only way out is through the door.\n"\
     "Should you open the door?\n"\
     "1 Yes\n"\
@@ -802,6 +797,7 @@ for char in message12:
 # next message
 time.sleep(1)
 message13 = "was more than you wanted to see.\n"\
+"\n"
 
 
 # function to print the message slowly.
@@ -812,7 +808,7 @@ for char in message13:
 
 # waits for the user to press enter - Douglas
 stop_event = threading.Event()
-thread = threading.Thread(target=flashing_text, args=(stop_event,))
+thread = threading.Thread(target=flashing_text1, args=(stop_event,))
 thread.start()
 
 
@@ -837,7 +833,7 @@ def lock_picking():
 
     # waits for the user to press enter - Douglas
     stop_event = threading.Event()
-    thread = threading.Thread(target=flashing_text, args=(stop_event,))
+    thread = threading.Thread(target=flashing_text1, args=(stop_event,))
     thread.start()
 
 
@@ -851,7 +847,7 @@ def lock_picking():
     message15 = "The pounding of the supernatural thing on the plate of metal interrupts your brief moment of silence.\n"\
     "You dash to the trapdoor in the center of the room,\n"\
     "and fumble with the key as you try to jam it into the old and tarnished lock.\n"\
-    "With shaking hands you manage to twist the key, and you quickly slide it off and fling open the hatch in the floor.\n"\
+    "With shaking hands you manage to twist the key, quickly sliding it off and fling open the hatch in the floor.\n"\
     "You jump down to the bottom of the stairs that are revealed, and sprint down the corridor.\n"\
     "To your dismay, you find another door, securely padlocked.\n"\
     "Frantically, you look around, and spy a few pins.\n"\
@@ -866,66 +862,116 @@ def lock_picking():
 
 
     # Lock Picking Game - Douglas
+    time.sleep(3)
     clear_terminal()
-    low = 1  
-    high = 6  
-    guess = 0  
+    low = 1
+    high = 6
+    guess = 0
     num1 = random.randint(low, high)
     num2 = random.randint(low, high)
     num3 = random.randint(low, high)
     num4 = random.randint(low, high)
 
-
-
-
     correct_answer = [str(num1), str(num2), str(num3), str(num4)]
+    correct_count = 0
+    wrong_count = 0
+    time_limit = 90  # Set the time limit in seconds
+    time_up = False  # Flag to indicate if time is up
 
+    # Timer function
+    def timer():
+        nonlocal time_up
+        time.sleep(time_limit)
+        time_up = True
 
-    correct_count = 0  
-    wrong_count = 0  
+    # Start the timer thread
+    timer_thread = threading.Thread(target=timer)
+    timer_thread.start()
 
+    print("Correct Place: lists the amount of correct numbers in the correct placement.")
+    print("Wrong Place: lists the amount of correst numbers in the wrong placement.")
+    print("Find the correct numbers and their placement to pick the lock.")
+    print("BUT YOU MUST HURRY!")
+    print("Only "+str(time_limit)+" seconds until the Beast breaks in!\n")
 
-    while guess == 0:  
+    while guess == 0:
+        if time_up:
+            message27 = "The Beast breaks down the door and drags you off, you are never heard of again.\n"
+
+            # function to print the message slowly.
+            for char in message27:
+                print(char, end="", flush=True)
+                time.sleep(delay)
+
+            # waits for the user to press enter
+            stop_event = threading.Event()
+            thread = threading.Thread(target=flashing_text3, args=(stop_event,))
+            thread.start()
+
+            input()
+            stop_event.set()
+            thread.join()
+            clear_terminal()
+            game_selection()
+
         if correct_count == 4:
-            print("You got all of them correct!")
+            print("KA_KLUNK!")
             guess = 1
-            break
+            time.sleep(2)
+            return
 
+        user_input = input("Enter your guess (4 digits between 1 and 6):\n")
 
-        user_input = input("Enter your guess (4 digits between 1 and 6):\n")  
-
-
-        if len(user_input) != 4:  
-            print("Please enter exactly 4 characters.")  
+        if len(user_input) != 4:
+            print("Please enter exactly 4 characters.")
             continue
-       
-
 
         correct_count = 0
         wrong_count = 0
 
-
-   
         correct_positions = [False, False, False, False]
-        wrong_positions = [False, False, False, False]  
+        wrong_positions = [False, False, False, False]
         temp_correct_answer = correct_answer.copy()
 
-
-   
         for index in range(4):
-            if user_input[index] == correct_answer[index]:  
+            if user_input[index] == correct_answer[index]:
                 correct_count += 1
-                correct_positions[index] = True  
-                temp_correct_answer[index] = None  
+                correct_positions[index] = True
+                temp_correct_answer[index] = None
         for index in range(4):
-            if not correct_positions[index]:  
+            if not correct_positions[index]:
                 for compare_index in range(4):
                     if not correct_positions[compare_index] and user_input[index] == str(temp_correct_answer[compare_index]) and temp_correct_answer[compare_index] is not None:
                         wrong_count += 1
-                        temp_correct_answer[compare_index] = None  
+                        temp_correct_answer[compare_index] = None
+
+        print(f"Correct Place: {correct_count}, Wrong Place: {wrong_count}")
+
+    # Stop the timer thread if the user succeeds
+    time_up = True
+    timer_thread.join()
+
+    # Success message
+    print("You successfully picked the lock!")
+    print("Press Enter to continue.")
+    input()
+    clear_terminal()
 
 
-        print(f"Correct: {correct_count}, Wrong: {wrong_count}")
+    print(f"Correct: {correct_count}, Wrong: {wrong_count}")
+
+    # Stop the timer thread if the user succeeds
+    time_up = True
+    timer_thread.join()
+
+    # Success message
+    print("You successfully picked the lock!")
+    print("Press Enter to continue.")
+    input()
+    clear_terminal()
+
+
+    print(f"Correct: {correct_count}, Wrong: {wrong_count}")
        
 # Calls the lock picking game
 lock_picking()
@@ -969,14 +1015,15 @@ time.sleep(1)
 
 # next message
 message18 = "You see your chance.\n"\
-"Just ahead, you see an opening to a large room, and further in the room, is a door with light peeking through the cracks.\n"\
+"Just ahead, you see an opening to a large room, and further in the room,\n"\
+"is a door with light peeking through the cracks.\n"\
 "Not just any light, natural light.\n"\
 "You pull any last ounce of strength from your weekend body and push it into your legs.\n"\
 "Managing to propel your body the final distance.\n"\
 "Never before has time passed so slowly.\n"\
 "You can feel the pumping of each stride of your legs,\n"\
 "the beat of your heart pumping furiously inside your chest,\n"\
-"But worst of all, \n"\
+"but worst of all, \n"\
 
 
 # function to print the message slowly.
@@ -1061,7 +1108,7 @@ for char in message23:
 
 # waits for the user to press enter - Douglas
 stop_event = threading.Event()
-thread = threading.Thread(target=flashing_text, args=(stop_event,))
+thread = threading.Thread(target=flashing_text1, args=(stop_event,))
 thread.start()
 
 
@@ -1105,9 +1152,8 @@ for char in message25:
 
 # waits for the user to press enter - Douglas
 stop_event = threading.Event()
-thread = threading.Thread(target=flashing_text, args=(stop_event,))
+thread = threading.Thread(target=flashing_text1, args=(stop_event,))
 thread.start()
-
 
 input()
 stop_event.set()
@@ -1117,12 +1163,12 @@ clear_terminal()
 
 # Credits
 message26 = "Thank you for playing THE UNDERWORLD!\n"\
-"If you didn't know, this game took (number) lines of code.\n"\
+"If you didn't know, this game took over 1100 lines of code.\n"\
 "If you could let us know that you appreciated our game, it would mean a lot.\n"\
 "Once again, thank you, and fairwell.\n"\
 "\n"\
-"Credits:" \
-"Tic-Tac-Toe  = Jared Lewis"
+"Credits:\n"\
+"Tic-Tac-Toe  = Jared Lewis\n"\
 "Hangman      = Alan De Lara\n"\
 "Memory       = Anthony Petersen\n"\
 "Lock Picking = Douglas London\n"\
@@ -1132,284 +1178,9 @@ message26 = "Thank you for playing THE UNDERWORLD!\n"\
 "\n"\
 "Debugging:\n"\
 "Alan de Lara\n"\
-"Antohony Petersen\n"
+"Anthony Petersen\n"
 
-# Douglas code stuff
-
-
-frames = [
-    """
-    N   N  EEEEE  V   V  EEEEE  RRRR
-    NN  N  E      V   V  E      R   R
-    N  NN  EEEE   V   V  EEEE   RRRR
-    N   N  E       V V   E      R  R
-    N   N  EEEEE    V    EEEEE  R   R
-    """,  # "Never"
-
-    """
-    GGGG  OOO   N   N  N   N  AAAAA
-    G     O  O  NN  N  NN  N  A   A
-    G  GG O  O  N N N  N N N  AAAAA
-    G   G O  O  N  NN  N  NN  A   A
-    GGGG  OOO   N   N  N   N  A   A
-    """,  # "Gonna"
-
-    """
-    GGGG  III  V   V  EEEEE
-    G     III  V   V  E    
-    G  GG III  V   V  EEEE 
-    G   G III   V V   E    
-    GGGG  III    V    EEEEE
-    """,  # "Give"
-
-    """
-    Y   Y  OOO  U   U
-     Y Y  O   O U   U
-      Y   O   O U   U
-      Y   O   O U   U
-      Y    OOO   UUU 
-    """,  # "You"
-
-    """
-    U   U  PPPP
-    U   U  P   P
-    U   U  PPPP
-    U   U  P
-     UUU   P
-    """,  # "Up"
-
-    """
-    N   N  EEEEE  V   V  EEEEE  RRRR
-    NN  N  E      V   V  E      R   R
-    N N N  EEEE   V   V  EEEE   RRRR
-    N  NN  E       V V   E      R  R
-    N   N  EEEEE    V    EEEEE  R   R
-    """,  # "Never"
-
-    """
-    GGGG  OOO   N   N  N   N  AAAAA
-    G     O  O  NN  N  NN  N  A   A
-    G  GG O  O  N N N  N N N  AAAAA
-    G   G O  O  N  NN  N  NN  A   A
-    GGGG  OOO   N   N  N   N  A   A
-    """,  # "Gonna"
-
-    """
-    L      EEEEE  TTTTT
-    L      E        T
-    L      EEEE     T
-    L      E        T
-    LLLLL  EEEEE    T
-    """,  # "Let"
-
-    """
-    Y   Y  OOO  U   U
-     Y Y  O   O U   U
-      Y   O   O U   U
-      Y   O   O U   U
-      Y    OOO   UUU 
-    """,  # "You"
-
-    """
-    DDDD   OOO  W   W  N   N
-    D   D O   O W   W  NN  N
-    D   D O   O W W W  N N N
-    D   D O   O WW WW  N  NN
-    DDDD   OOO  W   W  N   N
-    """,  # "Down"
-
-    """
-    N   N  EEEEE  V   V  EEEEE  RRRR
-    NN  N  E      V   V  E      R   R
-    N N N  EEEE   V   V  EEEE   RRRR
-    N  NN  E       V V   E      R  R
-    N   N  EEEEE    V    EEEEE  R   R
-    """,  # "Never"
-
-    """
-    GGGG  OOO   N   N  N   N  AAAAA
-    G     O  O  NN  N  NN  N  A   A
-    G  GG O  O  N N N  N N N  AAAAA
-    G   G O  O  N  NN  N  NN  A   A
-    GGGG  OOO   N   N  N   N  A   A
-    """,  # "Gonna"
-
-    """
-    RRRR  U   U  N   N
-    R   R U   U  NN  N
-    RRRR  U   U  N N N
-    R  R  U   U  N  NN
-    R   R UUUUU  N   N
-    """,  # "Run"
-
-    """
-    AAAAA  RRRR   OOO  U   U  N   N  DDDD
-    A   A  R   R O   O U   U  NN  N  D   D
-    AAAAA  RRRR  O   O U   U  N N N  D   D
-    A   A  R  R  O   O U   U  N  NN  D   D
-    A   A  R   R  OOO   UUU   N   N  DDDD
-    """,  # "Around"
-
-    """
-    AAAAA  N   N  DDDD
-    A   A  NN  N  D   D
-    AAAAA  N N N  D   D
-    A   A  N  NN  D   D
-    A   A  N   N  DDDD
-    """,  # "And"
-
-    """
-    DDDD  EEEEE  SSSSS  EEEEE  RRRR  TTTTT
-    D   D E      S      E      R   R   T
-    D   D EEEE   SSSSS  EEEE   RRRR    T
-    D   D E          S  E      R  R    T
-    DDDD  EEEEE  SSSSS  EEEEE  R   R   T
-    """,  # "Desert"
-
-    """
-    Y   Y  OOO  U   U
-     Y Y  O   O U   U
-      Y   O   O U   U
-      Y   O   O U   U
-      Y    OOO   UUU 
-    """,  # "You"
-
-    """
-    N    N  EEEEE  V   V  EEEEE  RRRR
-    N N  N  E      V   V  E      R   R
-    N  N N  EEEE   V   V  EEEE   RRRR
-    N   NN  E       V V   E      R  R
-    N    N  EEEEE    V    EEEEE  R   R
-    """,  # "Never"
-
-    """
-    GGGG   OOO   N   N  N   N  AAAAA
-    G     O   O  NN  N  NN  N  A   A
-    G  GG O   O  N N N  N N N  AAAAA
-    G   G O   O  N  NN  N  NN  A   A
-    GGGG   OOO   N   N  N   N  A   A
-    """,  # "Gonna"
-
-    """
-    M   M  AAAAA  K   K  EEEEE
-    MM MM  A   A  K  K   E
-    M M M  AAAAA  KKK    EEEE
-    M   M  A   A  K  K   E
-    M   M  A   A  K   K  EEEEE
-    """,  # "Make"
-
-    """
-    Y   Y  OOO  U   U
-     Y Y  O   O U   U
-      Y   O   O U   U
-      Y   O   O U   U
-      Y    OOO   UUU 
-    """,  # "You"
-
-    """
-    CCCCC  RRRR  YY YY
-    C      R   R  YYY
-    C      RRRR    Y
-    C      R  R    Y
-    CCCCC  R   R   Y
-    """,  # "Cry"
-
-    """
-    N  N  EEEEE  V   V  EEEEE  RRRR
-    N  N  E      V   V  E      R   R
-    N  N  EEEE   V   V  EEEE   RRRR
-    N  N  E       V V   E      R  R
-    NN N  EEEEE    V    EEEEE  R   R
-    """,  # "Never"
-
-    """
-    GGGG  OOO  N   N  N   N  AAAAA
-    G     O  O  NN  N  NN  N  A   A
-    G  GG O  O  N N N  N N N  AAAAA
-    G   G O  O  N  NN  N  NN  A   A
-    GGGG  OOO   N   N  N   N  A   A
-    """,  # "Gonna"
-
-    """
-    SSSSS  AAAAA  Y   Y
-    S      A   A   Y Y
-    SSSSS  AAAAA    Y
-        S  A   A    Y
-    SSSSS  A   A    Y
-    """,  # "Say"
-
-    """
-    GGGG   OOO   OOO  DDDD   BBBB  Y   Y
-    G     O   O O   O D   D  B   B  Y Y
-    G  GG O   O O   O D   D  BBBBB   Y
-    G   G O   O O   O D   D  B   B   Y
-    GGGG   OOO   OOO  DDDD   BBBB    Y
-    """,  # "Goodbye"
-
-    """
-    N   N  EEEEE  V   V  EEEEE  RRRR
-    NN  N  E      V   V  E      R   R
-    N N N  EEEE   V   V  EEEE   RRRR
-    N  NN  E       V V   E      R  R
-    N   N  EEEEE    V    EEEEE  R   R
-    """,  # "Never"
-
-    """
-    GGGG  OOO   N   N  N   N  AAAAA
-    G     O  O  NN  N  NN  N  A   A
-    G  GG O  O  N N N  N N N  AAAAA
-    G   G O  O  N  NN  N  NN  A   A
-    GGGG  OOO   N   N  N   N  A   A
-    """,  # "Gonna"
-
-    """
-    TTTTT  EEEEE  L     L   
-      T    E      L     L     
-      T    EEEE   L     L    
-      T    E      L     L    
-      T    EEEEE  LLLLL LLLLL 
-    """,  # "Tell"
-
-    """
-    AAAAA     L      I   EEEEE
-    A   A     L      I   E    
-    AAAAA     L      I   EEEE 
-    A   A     L      I   E    
-    A   A     LLLLL  I   EEEEE
-    """,  # "Lie"
-
-    """
-    AAAAA  N   N  DDDD
-    A   A  NN  N  D   D
-    AAAAA  N N N  D   D
-    A   A  N  NN  D   D
-    A   A  N   N  DDDD
-    """,  # "And"
-
-    """
-    H   H  U   U  RRRR  TTTTT  
-    H   H  U   U  R   R   T    
-    HHHHH  U   U  RRRR    T     
-    H   H  U   U  R  R    T     
-    H   H  UUUUU  R   R   T    
-    """,  # "Hurt"
-
-    """ 
-    Y   Y  OOO  U   U
-     Y Y  O   O U   U
-      Y   O   O U   U
-      Y   O   O U   U
-      Y    OOO  UUUUU
-    """,
-]
-
-while True:
-    for frame in frames:
-        os.system("cls" if os.name == "nt" else "clear")  # Clears screen for smooth animation
-        print(frame)
-        time.sleep(0.5)  # Adjust speed if needed
-
-import time
-import os
-
-
+# function to print the message slowly.
+for char in message26:
+    print(char, end="",)
+    time.sleep(delay)
