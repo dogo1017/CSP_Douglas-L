@@ -1,4 +1,10 @@
 # Text Based Adventure
+
+# credits at the bottom of who did what
+# credits at the bottom of who did what
+# credits at the bottom of who did what
+# credits at the bottom of who did what
+# credits at the bottom of who did what
 import time
 import sys
 import threading
@@ -1462,3 +1468,16 @@ while True:
         os.system("cls" if os.name == "nt" else "clear")  # Clears screen for smooth animation
         print(frame)
         time.sleep(0.5)  # Adjust speed if needed
+
+#"Credits:\n"\
+#"Tic-Tac-Toe  = Jared Lewis\n"\
+#"Hangman      = Alan De Lara\n"\
+#"Memory       = Anthony Petersen\n"\
+#"Lock Picking = Douglas London\n"\
+#"\n"\
+#"Story        = Jared Lewis\n"\
+#"Fancy Text   = Douglas London\n"\
+#"\n"\
+#"Debugging:\n"\
+#"Alan de Lara\n"\
+#"Anthony Petersen\n"
