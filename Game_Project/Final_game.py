@@ -849,135 +849,113 @@ def lock_picking():
     clear_terminal()
 
 
-    # next message - Jared
-    message15 = "The pounding of the supernatural thing on the plate of metal interrupts your brief moment of silence.\n"\
-    "You dash to the trapdoor in the center of the room,\n"\
-    "and fumble with the key as you try to jam it into the old and tarnished lock.\n"\
-    "With shaking hands you manage to twist the key, quickly sliding it off and fling open the hatch in the floor.\n"\
-    "You jump down to the bottom of the stairs that are revealed, and sprint down the corridor.\n"\
-    "To your dismay, you find another door, securely padlocked.\n"\
-    "Frantically, you look around, and spy a few pins.\n"\
-    "You have one chance of survival...\n"\
-    "YOU HAVE TO PICK THE LOCK!\n"\
+import random
+import threading
+import time
 
+# Game introduction
+message15 = (
+    "The pounding of the supernatural thing on the plate of metal interrupts your brief moment of silence.\n"
+    "You dash to the trapdoor in the center of the room,\n"
+    "and fumble with the key as you try to jam it into the old and tarnished lock.\n"
+    "With shaking hands you manage to twist the key, quickly sliding it off and flinging open the hatch in the floor.\n"
+    "You jump down to the bottom of the stairs that are revealed, and sprint down the corridor.\n"
+    "To your dismay, you find another door, securely padlocked.\n"
+    "Frantically, you look around, and spy a few pins.\n"
+    "You have one chance of survival...\n"
+    "YOU HAVE TO PICK THE LOCK!\n"
+)
 
-    # function to print the message slowly.
-    for char in message15:
-        print(char, end="")
-        time.sleep(delay)
+delay = 0.02  # Adjust print speed
+for char in message15:
+    print(char, end="", flush=True)
+    time.sleep(delay)
 
+# Lock Picking Game
+time.sleep(3)
+low, high = 1, 6
+num1, num2, num3, num4 = [random.randint(low, high) for _ in range(4)]
+correct_answer = [str(num1), str(num2), str(num3), str(num4)]
+time_limit = 90
+time_up = False
 
-    # Lock Picking Game - Douglas
-    time.sleep(3)
-    clear_terminal()
-    low = 1
-    high = 6
-    guess = 0
-    num1 = random.randint(low, high)
-    num2 = random.randint(low, high)
-    num3 = random.randint(low, high)
-    num4 = random.randint(low, high)
-
-    correct_answer = [str(num1), str(num2), str(num3), str(num4)]
-    correct_count = 0
-    wrong_count = 0
-    time_limit = 90  # Set the time limit in seconds
-    time_up = False  # Flag to indicate if time is up
-
-    # Timer function
-    def timer():
-        nonlocal time_up
-        time.sleep(time_limit)
-        time_up = True
-
-    # Start the timer thread
-    timer_thread = threading.Thread(target=timer)
-    timer_thread.start()
-
-    print("Correct Place: lists the amount of correct numbers in the correct placement.")
-    print("Wrong Place: lists the amount of correst numbers in the wrong placement.")
-    print("Find the correct numbers and their placement to pick the lock.")
-    print("BUT YOU MUST HURRY!")
-    print("Only "+str(time_limit)+" seconds until the Beast breaks in!\n")
-
-    while guess == 0:
-        if time_up:
-            message27 = "The Beast breaks down the door and drags you off, you are never heard of again.\n"
-
-            # function to print the message slowly.
-            for char in message27:
-                print(char, end="", flush=True)
-                time.sleep(delay)
-
-            # waits for the user to press enter
-            stop_event = threading.Event()
-            thread = threading.Thread(target=flashing_text3, args=(stop_event,))
-            thread.start()
-
-            input()
-            stop_event.set()
-            thread.join()
-            clear_terminal()
-            game_selection()
-
-        if correct_count == 4:
-            print("KA_KLUNK!")
-            guess = 1
-            time.sleep(2)
-            return
-
-        user_input = input("Enter your guess (4 digits between 1 and 6):\n")
-
-        if len(user_input) != 4:
-            print("Please enter exactly 4 characters.")
-            continue
-
-        correct_count = 0
-        wrong_count = 0
-
-        correct_positions = [False, False, False, False]
-        wrong_positions = [False, False, False, False]
-        temp_correct_answer = correct_answer.copy()
-
-        for index in range(4):
-            if user_input[index] == correct_answer[index]:
-                correct_count += 1
-                correct_positions[index] = True
-                temp_correct_answer[index] = None
-        for index in range(4):
-            if not correct_positions[index]:
-                for compare_index in range(4):
-                    if not correct_positions[compare_index] and user_input[index] == str(temp_correct_answer[compare_index]) and temp_correct_answer[compare_index] is not None:
-                        wrong_count += 1
-                        temp_correct_answer[compare_index] = None
-
-        print(f"Correct Place: {correct_count}, Wrong Place: {wrong_count}")
-
-    # Stop the timer thread if the user succeeds
+# Timer function
+def timer():
+    global time_up
+    time.sleep(time_limit)
     time_up = True
-    timer_thread.join()
+
+# Start the timer
+timer_thread = threading.Thread(target=timer, daemon=True)
+timer_thread.start()
+
+print("\nCorrect Place: shows how many numbers are correct and in the right position.")
+print("Wrong Place: shows how many numbers are correct but in the wrong position.")
+print(f"Find the correct numbers and their placement to pick the lock. You have {time_limit} seconds!\n")
+
+while True:
+    if time_up:
+        print("\nThe Beast breaks down the door and drags you off. You are never heard from again...\n")
+        exit()  # Ends the game when time runs out
+
+    user_input = input("Enter your guess (4 digits between 1 and 6): ").strip()
+
+    if len(user_input) != 4 or not user_input.isdigit() or any(c not in "123456" for c in user_input):
+        print("Invalid input! Enter exactly 4 numbers between 1 and 6.")
+        continue
+
+    correct_count, wrong_count = 0, 0
+    correct_positions = [False] * 4
+    temp_correct_answer = correct_answer.copy()
+
+    # Check correct positions
+    for i in range(4):
+        if user_input[i] == correct_answer[i]:
+            correct_count += 1
+            correct_positions[i] = True
+            temp_correct_answer[i] = None  
+
+    # Check wrong positions
+    for i in range(4):
+        if not correct_positions[i]:  # Only check misplaced numbers
+            for j in range(4):
+                if temp_correct_answer[j] is not None and user_input[i] == temp_correct_answer[j]:
+                    wrong_count += 1
+                    temp_correct_answer[j] = None  # Mark as counted
+                    break
+
+    print(f"Correct Place: {correct_count}, Wrong Place: {wrong_count}")
+
+    if correct_count == 4:
+        print("KA_KLUNK! You successfully picked the lock!")
+        break  # Exit the loop if the lock is picked
+
+time_up = True  # Ensure timer stops
+print("\nPress Enter to continue.")
+input()
+
 
     # Success message
-    print("You successfully picked the lock!")
-    print("Press Enter to continue.")
-    input()
-    clear_terminal()
+print("You successfully picked the lock!")
+print("Press Enter to continue.")
+input()
+clear_terminal()
 
 
-    print(f"Correct: {correct_count}, Wrong: {wrong_count}")
+print(f"Correct: {correct_count}, Wrong: {wrong_count}")
 
     # Stop the timer thread if the user succeeds
-    time_up = True
-    timer_thread.join()
+time_up = True
+timer_thread.join()
 
     # Success message
-    print("You successfully picked the lock!")
-    print("Press Enter to continue.")
-    input()
-    clear_terminal()
+print("You successfully picked the lock!")
+print("Press Enter to continue.")
+input()
+clear_terminal()
 
 
-    print(f"Correct: {correct_count}, Wrong: {wrong_count}")
+print(f"Correct: {correct_count}, Wrong: {wrong_count}")
        
 # Calls the lock picking game
 lock_picking()
