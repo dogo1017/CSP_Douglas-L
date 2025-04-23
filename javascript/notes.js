@@ -12,7 +12,8 @@ function change() {
 }
 
 function hello() {
-    document.getElementById("title").innerHTML = "Hello World"
+    let name = window.prompt("What is your name?", "Koro Sensei")
+    document.getElementById("title").innerHTML = "Hello " + name + "!"
 }
 function hover() {
 document.getElementById("img").src = "https://www.greenthumbsgarden.com/cdn/shop/products/Bartlett_Pear_2_1400x.jpg?v=1580261573"
@@ -20,6 +21,12 @@ document.getElementById("img").src = "https://www.greenthumbsgarden.com/cdn/shop
 function leave() {
 document.getElementById("img").src = "https://waapple.org/wp-content/uploads/2021/06/Variety_Cosmic-Crisp-transparent-300x300.png"
 }
-function hidden(){
-    document.getElementById("meme").style.display = "block"
+
+
+function pop() {
+    window.alert("Really Don't click that!")
+}
+
+function show(){
+    document.getElementById("lost").style.display = "block"
 }
