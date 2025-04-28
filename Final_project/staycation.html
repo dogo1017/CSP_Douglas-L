@@ -4,26 +4,64 @@
         <meta charset="UTF-8">
         <title>Staycation</title>
         <script src="script.js"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Tangerine:wght@400;700&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
         <style>
+
             body {
+                font-family: "Kaushan Script", cursive;
+                font-style: normal;
+                font-weight: 300;
                 background-color: #fffbf0ff;
                 color: #e4ddf4;
-            }
-            #sidebar {
-                background-color: #943d24ff;
+                margin: 0;
                 display: grid;
                 grid-template-columns: 1fr 6fr;
-                grid-template-rows: 100%;
+                grid-template-rows: 100%; 
+                height: 100vh;
+            }
+            h1 {
+                color: #282612;
+            }
+            p {
+                background-color: #2d2d2dff;
+                padding-top: 4px;
+                padding-bottom: 4px;
+                padding-left: 2px;
+                padding-right: 2px;
+                margin-right: 10px;
+            }
+
+
+            #sidebar {
+                background-color: #943d24ff;
+                padding: 20px;
+            }
+
+            #main-content {
+                padding: 20px;
             }
         </style>
     </head>
     <body> 
+        <div id="sidebar">
+            <div id="sidebar-content">
+                <p>Sidebar Content</p>
+            </div>
+        </div>
+    </body>
+</html>
+
+    <!-- Main Content -->
+    <div id="main-content">
         <h1>Staycations</h1>
         <p>Staycations are a great way to relax and recharge without the stress of travel. They allow you to explore your local area, enjoy leisure activities, and spend quality time with family and friends.</p>
-    </body>
-    <div id="sidebar">
-        <div id="sidebar-content">
-            test
-        </div>
+
+        <div id="reasons"></div>
+        <div id="images"></div>
+        <div id="why-its-a-national-monument"></div>
+        <div id="nearby-attractions"></div>
     </div>
+</body>
 </html>
