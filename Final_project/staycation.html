@@ -7,6 +7,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Tangerine:wght@400;700&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
         <style>
 
             body {
@@ -32,22 +33,43 @@
                 padding-right: 2px;
                 margin-right: 10px;
             }
-
+            
+            #website-title {
+                grid-column: 2;
+            }
 
             #sidebar {
                 background-color: #943d24ff;
                 padding: 20px;
+                height: 100vh; 
             }
 
             #main-content {
                 padding: 20px;
             }
+
+            #arrow {
+                font-size: 20px;
+                color: #e4ddf4;
+            }
         </style>
+    <script src="staycation.js"></script>
     </head>
     <body> 
         <div id="sidebar">
             <div id="sidebar-content">
                 <p>Sidebar Content</p>
+                <ul>
+                    <li>first stuff</li>
+                    <br>
+                    <li>second stuff</li>
+                    <br>
+                    <li>third stuff</li>
+                    <br>
+                    <li>fourth stuff</li>
+                    <br>
+                    <li>fifth stuff</li>
+                </ul>
             </div>
         </div>
     </body>
@@ -55,13 +77,20 @@
 
     <!-- Main Content -->
     <div id="main-content">
-        <h1>Staycations</h1>
+        <div id="website-title"><h1>Staycations</h1></div>
         <p>Staycations are a great way to relax and recharge without the stress of travel. They allow you to explore your local area, enjoy leisure activities, and spend quality time with family and friends.</p>
-
+    <h2>Images <span id="arrow" onclick="hidden()" >►</span></h2>
+    <div id="timp-images">
+        <div id="hidden-images">
+        <img src="https://images.ctfassets.net/0wjmk6wgfops/4DvQf0oBODSZEEKIhzTNNA/f5bf252574f12a56d8785c00f7b76c07/UtahValley-1580-IMG_2803.jpg?w=1200&h=630&f=center&fit=fill" alt="Timpanogos Cave" width="300" height="200">
+        <img src="https://images.ctfassets.net/0wjmk6wgfops/4DvQf0oBODSZEEKIhzTNNA/f5bf252574f12a56d8785c00f7b76c07/UtahValley-1580-IMG_2803.jpg?w=1200&h=630&f=center&fit=fill" alt="Timpanogos Cave" width="300" height="200">
+        <img src="https://images.ctfassets.net/0wjmk6wgfops/4DvQf0oBODSZEEKIhzTNNA/f5bf252574f12a56d8785c00f7b76c07/UtahValley-1580-IMG_2803.jpg?w=1200&h=630&f=center&fit=fill" alt="Timpanogos Cave" width="300" height="200">
+        <img src="https://images.ctfassets.net/0wjmk6wgfops/4DvQf0oBODSZEEKIhzTNNA/f5bf252574f12a56d8785c00f7b76c07/UtahValley-1580-IMG_2803.jpg?w=1200&h=630&f=center&fit=fill" alt="Timpanogos Cave" width="300" height="200">
+    </div></div>
         <div id="reasons"></div>
-        <div id="images"></div>
         <div id="why-its-a-national-monument"></div>
         <div id="nearby-attractions"></div>
     </div>
+
 </body>
 </html>
