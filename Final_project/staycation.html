@@ -7,6 +7,23 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Tangerine:wght@400;700&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
+
+        <!--A header tag for the place-->
+        <!--A paragraph (3 sentence minimum) describing the place and why it is a good one to visit-->
+        <!--A list with at least 4 reasons why someone should go there-->
+        <!--3 images of the site-->
+        <!--The CSS needs to change:-->
+        <!--The background color-->
+        <!--text color-->
+        <!--font style-->
+        <!--gives margin and padding around things-->
+        <!--Use flexbox and or CSS Grid to structure the page-->
+        <!--The JavaScript needs to:-->
+        <!--Allow users to view or hide additional content (at least an image and a paragraph)-->
+        <!--Create at least one hoverable image-->
+        <!--The website needs to be easy to read, colorful, and well organized
+
+
         <style>
 
             body {
@@ -47,9 +64,17 @@
                 padding: 20px;
             }
 
+            #image-title {
+                -webkit-user-select: none;
+                 -ms-user-select: none;
+                user-select: none;
+            }
+
             #arrow {
                 font-size: 20px;
                 color: #e4ddf4;
+                cursor: pointer;
+                
             }
         </style>
 
@@ -79,10 +104,10 @@
     <div id="main-content">
         <div id="website-title"><h1>Staycations</h1></div>
         <p>Staycations are a great way to relax and recharge without the stress of travel. They allow you to explore your local area, enjoy leisure activities, and spend quality time with family and friends.</p>
-        <h2>Images <span id="arrow" onclick="hidden()">►</span></h2>
+        <h2 id="image-title">Images <span id="arrow" onmouseover="cursor()" onclick="toggleimages()">►</span></h2>
     <div id="timp-images">
         <div id="hidden-images">
-        <img src="https://images.ctfassets.net/0wjmk6wgfops/4DvQf0oBODSZEEKIhzTNNA/f5bf252574f12a56d8785c00f7b76c07/UtahValley-1580-IMG_2803.jpg?w=1200&h=630&f=center&fit=fill" alt="Timpanogos Cave" width="300" height="200">
+        <img id="img1" id="image" onmouseover="img1text()" src="https://images.ctfassets.net/0wjmk6wgfops/4DvQf0oBODSZEEKIhzTNNA/f5bf252574f12a56d8785c00f7b76c07/UtahValley-1580-IMG_2803.jpg?w=1200&h=630&f=center&fit=fill" alt="Timpanogos Cave" width="300" height="200">
         <img src="https://images.ctfassets.net/0wjmk6wgfops/4DvQf0oBODSZEEKIhzTNNA/f5bf252574f12a56d8785c00f7b76c07/UtahValley-1580-IMG_2803.jpg?w=1200&h=630&f=center&fit=fill" alt="Timpanogos Cave" width="300" height="200">
         <img src="https://images.ctfassets.net/0wjmk6wgfops/4DvQf0oBODSZEEKIhzTNNA/f5bf252574f12a56d8785c00f7b76c07/UtahValley-1580-IMG_2803.jpg?w=1200&h=630&f=center&fit=fill" alt="Timpanogos Cave" width="300" height="200">
         <img src="https://images.ctfassets.net/0wjmk6wgfops/4DvQf0oBODSZEEKIhzTNNA/f5bf252574f12a56d8785c00f7b76c07/UtahValley-1580-IMG_2803.jpg?w=1200&h=630&f=center&fit=fill" alt="Timpanogos Cave" width="300" height="200">
