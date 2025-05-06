@@ -7,25 +7,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Tangerine:wght@400;700&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
-
-        <!--A header tag for the place-->
-        <!--A paragraph (3 sentence minimum) describing the place and why it is a good one to visit-->
-        <!--A list with at least 4 reasons why someone should go there-->
-        <!--3 images of the site-->
-        <!--The CSS needs to change:-->
-        <!--The background color-->
-        <!--text color-->
-        <!--font style-->
-        <!--gives margin and padding around things-->
-        <!--Use flexbox and or CSS Grid to structure the page-->
-        <!--The JavaScript needs to:-->
-        <!--Allow users to view or hide additional content (at least an image and a paragraph)-->
-        <!--Create at least one hoverable image-->
-        <!--The website needs to be easy to read, colorful, and well organized
-
-
         <style>
-
             body {
                 font-family: "Kaushan Script", cursive;
                 font-style: normal;
@@ -49,73 +31,144 @@
                 padding-right: 2px;
                 margin-right: 10px;
             }
-            
             #website-title {
                 grid-column: 2;
             }
-
             #sidebar {
                 background-color: #943d24ff;
                 padding: 20px;
-                height: 100vh; 
+                height: 100vh;
             }
-
             #main-content {
                 padding: 20px;
             }
-
             #image-title {
                 -webkit-user-select: none;
-                 -ms-user-select: none;
+                -ms-user-select: none;
                 user-select: none;
+                color: black;
+                background-color: transparent;
+                padding: 0;
+                margin-top: 20px;
+                margin-bottom: 10px;
+                text-align: left;
+                border-radius: 0;
             }
-
             #arrow {
                 font-size: 20px;
-                color: #e4ddf4;
+                color: black;
                 cursor: pointer;
-                
+            }
+            #timp-title {
+                color: black;
+            }
+            #hidden-images {
+                display: none;
+            }
+            #hidden-images img {
+                transition: transform 0.3s ease;
+            }
+            #hidden-images img:hover {
+                transform: scale(1.1);
+            }
+            #reasons-title {
+                color: black;
+                background-color: transparent;
+                padding: 0;
+                margin-top: 20px;
+                margin-bottom: 10px;
+                text-align: left;
+                border-radius: 0;
+            }
+            #reasons-list {
+                background-color: #2d2d2dff;
+                padding: 15px;
+                border-radius: 5px;
+                margin-bottom: 20px;
+            }
+            #reasons-list ul {
+                list-style-type: disc;
+                padding-left: 20px;
+            }
+            #reasons-list li {
+                margin-bottom: 8px;
+                color: #e4ddf4;
+            }
+            #img-source {
+                font-size: 12px;
+                color: gray;
+                background-color: transparent;
+            }
+            #facts-list {
+                background-color: transparent;
+                padding-left: 0px;
+                padding-right: 0px;
             }
         </style>
-
     </head>
     <body> 
         <div id="sidebar">
             <div id="sidebar-content">
-                <p>Sidebar Content</p>
-                <ul>
-                    <li>first stuff</li>
-                    <br>
-                    <li>second stuff</li>
-                    <br>
-                    <li>third stuff</li>
-                    <br>
-                    <li>fourth stuff</li>
-                    <br>
-                    <li>fifth stuff</li>
-                </ul>
+                <h4 id="facts-title">Facts about Timp <span id="facts-arrow" onclick="togglefacts()">▼</span></h4>
+                <div id="facts-list" style="display: none;">
+                <p>Mount Timpanogos, often referred to as "Timp," is estimated to be over 300 million years old, with its unique limestone formations dating back to ancient seabeds. The Timpanogos Cave system, discovered in the early 20th century, features rare helictites—formations that grow in twisting, gravity-defying shapes. A fun fact about the mountain is that it is steeped in local folklore, including a legend about a Native American princess whose tears are said to have formed Emerald Lake. The mountain is also home to one of the longest-running annual hikes in the United States, attracting thousands of visitors each year. With its rich history, geological wonders, and cultural significance, Timpanogos continues to captivate adventurers and nature enthusiasts alike.</p>
+                </div>
             </div>
         </div>
         <script src="staycation.js"></script>
+        <div id="main-content">
+            <div id="website-title"><h1>Staycations</h1></div>
+            
+            <p>Staycations are a great way to relax and recharge without the stress of travel. They allow you to explore your local area, enjoy leisure activities, and spend quality time with family and friends.</p>
+            
+            <h3 id="timp-title">Timpanogos Cave National Monument</h3>
+            <p>Mount Timpanogos is a stunning mountain located in the Wasatch Range of Utah, known for its breathtaking views, wildflower-covered meadows, and challenging hiking trails. It’s a popular destination for outdoor enthusiasts who want to experience the beauty of nature and the thrill of reaching a summit over 11,000 feet high. Whether you’re hiking to Emerald Lake or exploring the scenic alpine terrain, Mount Timpanogos offers unforgettable adventures for visitors of all ages.</p>
+            
+            <h3 id="reasons-title">Reasons Why You Should Go</h3>
+            <div id="reasons-list">
+                <ul>
+                    <li>Experience breathtaking panoramic views from the summit.</li>
+                    <li>Explore the stunning Timpanogos Cave National Monument.</li>
+                    <li>Enjoy vibrant wildflower meadows during the summer months.</li>
+                    <li>Challenge yourself with scenic and adventurous hiking trails.</li>
+                </ul>
+            </div>
+            
+            <h2 id="image-title">Images <span id="arrow" onclick="toggleimages()">▼</span></h2>
+            <div id="timp-images">
+                <div id="hidden-images">
+                    <img id="img1" src="https://www.nps.gov/tica/learn/nature/images/K9A8948-Enhanced-SR.jpg?maxwidth=650&autorotate=false" alt="Timpanogos Cave Water Pool" width="300" height="200"> <p id="img-source">Source: National Park Service</p>
+                    <img src="https://liveandlethike.com/wp-content/uploads/2022/06/dsc04081.jpg" alt="Timpanogos Cave Interior" width="300" height="200"> <p id="img-source">Source: Live and Let Hike</p>
+                    <img src="https://www.sltrib.com/resizer/v2/https%3A%2F%2Fcloudfront-us-east-1.images.arcpublishing.com%2Fsltrib%2F2JCZSXRHAZARTNBVYAHAIY3QKY.png?auth=da41e4f94f9d995b43d28ccdbfe2f2b2048c4ee224ec248983596c81300cb26f&width=1200" alt="Timpanogos Cave Entrance" width="300" height="200"> <p id="img-source">Source: The Salt Lake Tribune</p>
+                </div>
+            </div>
+        </div>
+        <script>
+            function toggleimages() {
+                const arrow = document.getElementById("arrow");
+                const hiddenImages = document.getElementById("hidden-images");
+
+                if (hiddenImages.style.display === "none" || hiddenImages.style.display === "") {
+                    arrow.innerHTML = "▲";
+                    hiddenImages.style.display = "block";
+                } else {
+                    arrow.innerHTML = "▼";
+                    hiddenImages.style.display = "none";
+                }
+            }
+
+            function togglefacts() {
+                const factsArrow = document.getElementById("facts-arrow");
+                const factsList = document.getElementById("facts-list");
+
+                if (factsList.style.display === "none" || factsList.style.display === "") {
+                    factsArrow.innerHTML = "▲";
+                    factsList.style.display = "block";
+                } else {
+                    factsArrow.innerHTML = "▼";
+                    factsList.style.display = "none";
+                }
+            }
+        </script>
     </body>
-</html>
-
-
-    <div id="main-content">
-        <div id="website-title"><h1>Staycations</h1></div>
-        <p>Staycations are a great way to relax and recharge without the stress of travel. They allow you to explore your local area, enjoy leisure activities, and spend quality time with family and friends.</p>
-        <h2 id="image-title">Images <span id="arrow" onmouseover="cursor()" onclick="toggleimages()">►</span></h2>
-    <div id="timp-images">
-        <div id="hidden-images">
-        <img id="img1" id="image" onmouseover="img1text()" src="https://images.ctfassets.net/0wjmk6wgfops/4DvQf0oBODSZEEKIhzTNNA/f5bf252574f12a56d8785c00f7b76c07/UtahValley-1580-IMG_2803.jpg?w=1200&h=630&f=center&fit=fill" alt="Timpanogos Cave" width="300" height="200">
-        <img src="https://images.ctfassets.net/0wjmk6wgfops/4DvQf0oBODSZEEKIhzTNNA/f5bf252574f12a56d8785c00f7b76c07/UtahValley-1580-IMG_2803.jpg?w=1200&h=630&f=center&fit=fill" alt="Timpanogos Cave" width="300" height="200">
-        <img src="https://images.ctfassets.net/0wjmk6wgfops/4DvQf0oBODSZEEKIhzTNNA/f5bf252574f12a56d8785c00f7b76c07/UtahValley-1580-IMG_2803.jpg?w=1200&h=630&f=center&fit=fill" alt="Timpanogos Cave" width="300" height="200">
-        <img src="https://images.ctfassets.net/0wjmk6wgfops/4DvQf0oBODSZEEKIhzTNNA/f5bf252574f12a56d8785c00f7b76c07/UtahValley-1580-IMG_2803.jpg?w=1200&h=630&f=center&fit=fill" alt="Timpanogos Cave" width="300" height="200">
-    </div></div>
-        <div id="reasons"></div>
-        <div id="why-its-a-national-monument"></div>
-        <div id="nearby-attractions"></div>
-    </div>
-
-</body>
 </html>

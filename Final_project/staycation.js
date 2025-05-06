@@ -2,18 +2,24 @@ function toggleimages() {
     const arrow = document.getElementById("arrow");
     const hiddenImages = document.getElementById("hidden-images");
 
-    if (arrow.innerHTML === "►") {
-        arrow.innerHTML = "▼";
+    if (hiddenImages.style.display === "none" || hiddenImages.style.display === "") {
+        arrow.innerHTML = "▲";
         hiddenImages.style.display = "block";
     } else {
-        arrow.innerHTML = "►";
+        arrow.innerHTML = "▼";
         hiddenImages.style.display = "none";
     }
 }
-function cursor() {
-document.getElementById("arrow").style.cursor = "pointer";
-}
 
-function img1text() {
-    document.getElementById("img1").
+function togglefacts() {
+    const factsArrow = document.getElementById("facts-arrow");
+    const factsList = document.getElementById("facts-list");
+
+    if (factsList.style.display === "none" || factsList.style.display === "") {
+        factsArrow.innerHTML = "▲";
+        factsList.style.display = "block";
+    } else {
+        factsArrow.innerHTML = "▼";
+        factsList.style.display = "none";
+    }
 }
